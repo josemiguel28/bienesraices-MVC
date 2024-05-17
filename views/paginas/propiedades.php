@@ -1,0 +1,1 @@
+<main class="contenedor seccion">				<h2>Casa y Depas en venta</h2>    <?php include 'listado.php'; ?></main>
