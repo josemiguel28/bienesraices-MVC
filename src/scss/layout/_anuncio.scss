@@ -1,0 +1,1 @@
+.contenedor-anuncio{  @include grid(2,4rem);  padding: 10px;  height: 45rem;    .fw-300{    text-transform: capitalize;    text-align: center;  }    .contenedor-imagen{    display: flex;    justify-content: center;    align-items: center;        img{      border-radius: 10px;    }  }}

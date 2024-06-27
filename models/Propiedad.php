@@ -67,5 +67,13 @@ class Propiedad extends ActiveRecord
         return self::$errores;
     }
 
+    public static function findPropertyByVendor($id)
+    {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendedorId = $id";
+        $resultado = self::consultaSQL($query);
+        
+        return $resultado;
+    }
+
 
 }
