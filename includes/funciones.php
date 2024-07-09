@@ -75,6 +75,10 @@ function mostrarMensaje(int $codigo): string
         case 4:
             $mensaje = "No se puede eliminar, el vendedor esta asignado a una propiedad";
             break;
+
+        case 5:
+            $mensaje = "Se realizo la acción correctamente, la casa esta vendida";
+            break;
         default:
             $mensaje = "";
     }

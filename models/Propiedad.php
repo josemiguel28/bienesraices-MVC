@@ -1,11 +1,12 @@
 <?php
+
 namespace Model;
 
 class Propiedad extends ActiveRecord
 {
     protected static string $tabla = 'propiedades';
 
-    protected static array $columnaDb = ["id", "titulo", "precio", "imagen", "descripcion", "habitaciones", "wc", "estacionamiento", "creado", "vendedorId"];
+    protected static array $columnaDb = ["id", "titulo", "precio", "imagen", "descripcion", "habitaciones", "wc", "estacionamiento", "creado", "vendedorId", "vendida"];
 
     public $id;
     public $titulo;
@@ -17,6 +18,7 @@ class Propiedad extends ActiveRecord
     public $creado;
     public $estacionamiento;
     public $vendedorId;
+    public $vendida = 0;
 
     public function __construct($args = [])
     {
@@ -30,6 +32,8 @@ class Propiedad extends ActiveRecord
         $this->estacionamiento = $args['estacionamiento'] ?? '';
         $this->creado = date('Y/m/d');
         $this->vendedorId = $args['vendedorId'] ?? '';
+        $this->vendida = 0 ?? '';
+
     }
 
     public function validar(): array
@@ -66,14 +70,59 @@ class Propiedad extends ActiveRecord
 
         return self::$errores;
     }
-
-    public static function findPropertyByVendor($id)
-    {
-        $query = "SELECT * FROM " . self::$tabla . " WHERE vendedorId = $id";
+    
+    public static function getUnsellProperties(){
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendida = 0";
         $resultado = self::consultaSQL($query);
-        
+
         return $resultado;
     }
 
+    //lista las propiedades 
+    public static function getUnsellPropertiesWithLimit($limite): array
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE vendida = 0 LIMIT " . self::$db->escape_string($limite);
+
+        return self::consultaSQL($query);
+    }
+
+    public static function getSellProperties()
+    {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendida = 1";
+
+        return self::consultaSQL($query);
+    }
+
+    public static function getSellPropertyById($id)
+    {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendida = 1 AND id = $id";
+        
+        return self::consultaSQL($query);
+    }
+
+    //obtener una propiedad random 
+    public static function isPropertySell($id)
+    {
+        $query = "UPDATE " . self::$tabla . " SET vendida= " . "1" . " WHERE id = $id ";
+        
+        return self::$db->query($query);
+
+    }
+
+    public static function findUnsellPropertyByVendor($id)
+    {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendedorId = $id AND vendida = 0";
+        $resultado = self::consultaSQL($query);
+
+        return $resultado;
+    }
+
+    public static function findSellPropertyByVendor($id)
+    {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE vendedorId = $id AND vendida = 1";
+        $resultado = self::consultaSQL($query);
+
+        return $resultado;
+    }
 
 }

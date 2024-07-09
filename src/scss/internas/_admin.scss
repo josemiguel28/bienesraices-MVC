@@ -14,6 +14,23 @@
   }
 }
 
+.acciones{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  a i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    }
+  
+    a {
+        &:hover {
+        background-color: $grisOscuro;
+        }
+    }
+}
+
 table.propiedades {
   margin-top: 4rem;
   width: 100%;

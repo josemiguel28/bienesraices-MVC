@@ -52,7 +52,7 @@ function navegacionResponsive() {
 function mostrarMetodosContacto(e) {
     const contactoDiv = document.querySelector('#contacto');
 
-    if (e.target.value === 'telefono'){
+    if (e.target.value === 'telefono') {
         contactoDiv.innerHTML = `
             <label for="telefono">Teléfono</label>
             <input type="tel" placeholder="Tu Teléfono" id="telefono" name="contacto[telefono]">
@@ -65,7 +65,7 @@ function mostrarMetodosContacto(e) {
             <label for="hora">Hora:</label>
             <input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]">
         `
-    }else{
+    } else {
         contactoDiv.innerHTML = `
 
             <label for="email">E-mail</label>
@@ -74,3 +74,14 @@ function mostrarMetodosContacto(e) {
         `
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    eventListeners();
+
+    darkMode();
+
+    verContrasena();
+});
+
+

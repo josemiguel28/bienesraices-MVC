@@ -13,7 +13,7 @@ class PropiedadController
     // mantiene la misma instancia del router que esta en el index 
     public static function index(Router $router)
     {
-        $propiedades = Propiedad::getAll();
+        $propiedades = Propiedad::getUnsellProperties();
         $vendedores = Vendedor::getAll();
         //muestra mensaje condicional
         $resultado = $_GET['resultado'] ?? null;
@@ -80,6 +80,7 @@ class PropiedadController
         $id = validarORedireccionar("/admin");
 
         $propiedad = Propiedad::find($id);
+        $isPropertySell = Propiedad::getSellPropertyById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -110,8 +111,10 @@ class PropiedadController
 
         $router->render('/propiedades/actualizar',
             ["propiedad" => $propiedad,
+                "isPropertySell" => $isPropertySell,
                 "vendedores" => $vendedores::getAll(),
-                "errores" => $propiedad::getErrores()]);
+                "errores" => $propiedad::getErrores()
+            ]);
     }
 
     public static function eliminar(Router $router)
@@ -139,6 +142,41 @@ class PropiedadController
                 }
             }
         }
+    }
+
+    public static function marcarComoVendida(Router $router): void
+    {
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        
+        $propiedad = Propiedad::find($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $propiedad->sincronizar();
+            
+            $vendida = Propiedad::isPropertySell($id);
+            
+            if($vendida){
+                header('Location: /admin?resultado=5');
+            }
+        }
+
+        $router->render('/propiedades/actualizar',
+            ["isPropertySell" => true
+            ]);
+    }
+    
+    public static function propiedadesVendidas(Router $router){
+        $propiedades = Propiedad::getSellProperties();
+        
+       
+        $router->render('/propiedades/vendidas',
+            [
+                "propiedades" => $propiedades
+            ]
+        
+        );
     }
 }
 

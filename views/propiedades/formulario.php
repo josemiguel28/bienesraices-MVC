@@ -1,4 +1,9 @@
+<?php if ($isPropertySell) : ?>
+		<div class="boton boton-verde-block">Esta propiedad ha sido vendida</div>
+<?php endif; ?>
+
 <fieldset>
+		
     <legend>Informacion general</legend>
 
     <label for="titulo">Titulo:</label>
