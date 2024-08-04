@@ -113,7 +113,8 @@ class PropiedadController
             ["propiedad" => $propiedad,
                 "isPropertySell" => $isPropertySell,
                 "vendedores" => $vendedores::getAll(),
-                "errores" => $propiedad::getErrores()
+                "errores" => $propiedad::getErrores(),
+                "readonly" => $isPropertySell
             ]);
     }
 
