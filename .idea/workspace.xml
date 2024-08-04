@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c33a08d5-d80a-4567-b60a-364277d7204a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/domcloud.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/PropiedadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PropiedadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/propiedades/formulario.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/propiedades/formulario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/propiedades/vendidas.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/propiedades/vendidas.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +139,7 @@
       <workItem from="1722549598298" duration="2931000" />
       <workItem from="1722574496921" duration="1754000" />
       <workItem from="1722739857155" duration="10648000" />
-      <workItem from="1722793048024" duration="2344000" />
+      <workItem from="1722793048024" duration="3700000" />
     </task>
     <servers />
   </component>
