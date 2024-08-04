@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     eventListeners();
 
     darkMode();
+
+    verContrasena();
 });
 
 function darkMode() {
@@ -75,13 +77,6 @@ function mostrarMetodosContacto(e) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
 
-    eventListeners();
-
-    darkMode();
-
-    verContrasena();
-});
 
 

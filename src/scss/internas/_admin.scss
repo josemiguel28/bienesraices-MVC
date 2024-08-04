@@ -71,3 +71,19 @@ table.propiedades {
   width: 200px;
   border-radius: 8px;
 }
+
+@include telefono{ 
+  .acciones{
+    
+    flex-direction: column;
+    
+    a { 
+      width: 100%;
+    }
+  }
+
+  .tabla-contenedor {
+    overflow-x: auto;
+    
+  }
+}
