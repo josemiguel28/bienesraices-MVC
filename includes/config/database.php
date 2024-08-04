@@ -1,12 +1,21 @@
-<?php 
+<?php
 
-function conectarDB(): mysqli {
-    $db = new mysqli('localhost', 'root','root', 'bienesraices_crud',3306);
+function conectarDB(): mysqli
+{
+    $db = new mysqli(
+        $_ENV['DB_HOST'],
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS'],
+        $_ENV['DB_NAME'],
+        $_ENV['DB_PORT']
+    );
+    
+    $db->set_charset('utf8');
 
-    if (!$db){
+    if (!$db) {
         echo "no se puedo conectar con la base de datos";
-        exit; 
+        exit;
     }
 
-    return $db; 
+    return $db;
 }
